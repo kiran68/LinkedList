@@ -1,5 +1,6 @@
 package com.bridgelabz.linkedlistDemo;
 
+
 class Node {
 	int data;
 	Node next;
@@ -57,15 +58,22 @@ class LinkedList {
 		System.out.println("null");
 	}
 
-	public void pop() {
-		if (head == null) {
-			System.out.println("Linked list is empty.");
-		} else {
-			head = head.next;
-		}
-	}
+	
+public void popLast() {
+    if (head == null) {
+        System.out.println("Linked list is empty.");
+    } else if (head.next == null) {
+        // Only one element in the linked list
+        head = null;
+    } else {
+        Node current = head;
+        while (current.next.next != null) {
+            current = current.next;
+        }
+        current.next = null;
+    }
 }
-
+}
 public class LinkedListDemo {
 	public static void main(String[] args) {
 		LinkedList myList = new LinkedList();
@@ -73,10 +81,11 @@ public class LinkedListDemo {
 		myList.append(70);
 
 		myList.insert(30, 56);
-		myList.pop();
+		myList.popLast();
 		myList.printList();
 	}
 }
+
 
 
 
